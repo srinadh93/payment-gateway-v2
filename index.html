@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 40px; background-color: #f4f4f9; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 800px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        
+        button { 
+            width: 100%; background-color: #28a745; color: white; border: none; 
+            padding: 15px; cursor: pointer; font-size: 18px; border-radius: 8px; font-weight: bold; transition: 0.3s; 
+        }
+        button:hover { background-color: #218838; transform: translateY(-2px); }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        th, td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background-color: #f8f9fa; color: #666; font-weight: 600; }
+        
+        .status-success { color: #28a745; font-weight: bold; background: #e6f9e9; padding: 5px 10px; border-radius: 20px; font-size: 14px; }
+        .status-failed { color: #dc3545; font-weight: bold; background: #ffeef0; padding: 5px 10px; border-radius: 20px; font-size: 14px; }
+        .status-pending { color: #ffc107; font-weight: bold; background: #fff8e1; padding: 5px 10px; border-radius: 20px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>💳 Payment Gateway</h1>
+    <button onclick="sendPayment()">⚡ Send $500 Payment</button>
+    
+    <h3>Transaction History</h3>
+    <table id="paymentsTable">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+    const API_URL = "http://localhost:8080/api/v1/payments";
+
+    async function sendPayment() {
+        await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ amount: 500 })
+        });
+        fetchPayments();
+    }
+
+    async function fetchPayments() {
+        try {
+            const response = await fetch(API_URL);
+            const payments = await response.json();
+            
+            const tbody = document.querySelector("#paymentsTable tbody");
+            tbody.innerHTML = ""; 
+
+            // Sort: Newest First
+            payments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            payments.forEach(p => {
+                const date = new Date(p.createdAt).toLocaleTimeString();
+                const row = `<tr>
+                    <td><code>${p.id.substring(0, 18)}...</code></td>
+                    <td>$${p.amount}</td>
+                    <td><span class="status-${p.status}">${p.status.toUpperCase()}</span></td>
+                    <td>${date}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        } catch (e) { console.log("Waiting for API..."); }
+    }
+
+    setInterval(fetchPayments, 2000); // Auto-refresh every 2 seconds
+    fetchPayments();
+</script>
+
+</body>
+</html>
