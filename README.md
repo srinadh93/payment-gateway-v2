@@ -137,7 +137,9 @@ GitHub Profile
 
 After pasting the code above into the file and saving (`Ctrl + S`), run these **3 commands** in your terminal:
 
+---
+
 ```powershell
 git add README.md
-git commit -m "Final fix for README"
-git push -f origin main
+git commit -m "Fix README formatting"
+git push origin main
