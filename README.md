@@ -13,7 +13,8 @@ This project simulates a real-world payment processing system. It separates the 
 5.  **Dashboard:** A real-time frontend to monitor transaction statuses.
 
 ## 📸 Screenshots
-![alt text](<Screenshot 2026-01-16 163938-1.png>)
+
+![Dashboard Screenshot](https://github.com/srinadh93/payment-gateway-v2/raw/main/Screenshot%202026-01-16%20163938-1.png)
 
 ## 🛠️ Tech Stack
 
@@ -42,7 +43,7 @@ Clone the repository:
 
 Bash
 
-git clone [https://github.com/srinadh93/payment-gateway-v2.git](https://github.com/srinadh93/payment-gateway-v2.git)
+git clone https://github.com/srinadh93/payment-gateway-v2.git
 Navigate to the project folder:
 
 Bash
@@ -69,7 +70,7 @@ JSON
 
 {
   "amount": 500.00,
-  "webhookUrl": "[https://webhook.site/your-unique-url](https://webhook.site/your-unique-url)"
+  "webhookUrl": "https://webhook.site/your-unique-url"
 }
 Response:
 
@@ -132,7 +133,11 @@ GitHub Profile
 
 ---
 
+### **How to Save (Do NOT paste this inside the file)**
+
+After pasting the code above into the file and saving (`Ctrl + S`), run these **3 commands** in your terminal:
+
 ```powershell
 git add README.md
-git commit -m "Fix README formatting"
-git push origin main
+git commit -m "Final fix for README"
+git push -f origin main
