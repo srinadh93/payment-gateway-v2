@@ -13,8 +13,7 @@ This project simulates a real-world payment processing system. It separates the 
 5.  **Dashboard:** A real-time frontend to monitor transaction statuses.
 
 ## 📸 Screenshots
-
-![alt text](<Screenshot 2026-01-16 163938.png>)
+![alt text](<Screenshot 2026-01-16 163938-1.png>)
 
 ## 🛠️ Tech Stack
 
