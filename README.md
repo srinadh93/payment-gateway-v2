@@ -12,6 +12,10 @@ This project simulates a real-world payment processing system. It separates the 
 4.  **Webhooks:** Automatically notifies external services (like a merchant website) upon completion.
 5.  **Dashboard:** A real-time frontend to monitor transaction statuses.
 
+## 📸 Screenshots
+
+![alt text](<Screenshot 2026-01-16 163938.png>)
+
 ## 🛠️ Tech Stack
 
 * **Language:** Java 17
@@ -23,40 +27,47 @@ This project simulates a real-world payment processing system. It separates the 
 
 ## 📂 Architecture
 
-`[Client/Dashboard]` -> `[API Service]` -> `[Redis Queue]` -> `[Worker Service]` -> `[PostgreSQL]`
-                                                                        |
-                                                                        v
-                                                                   `[External Webhook]`
+```mermaid
+graph LR
+  Client[Client/Dashboard] --> API[API Service]
+  API --> Redis[Redis Queue]
+  Redis --> Worker[Worker Service]
+  Worker --> DB[(PostgreSQL)]
+  Worker --> Webhook[External Webhook]
+⚡ How to Run
+Prerequisites
+Docker Desktop installed and running.
 
-## ⚡ How to Run
+Steps
+Clone the repository:
 
-### Prerequisites
-* Docker Desktop installed and running.
+Bash
 
-### Steps
-1.  Clone the repository:
-    ```bash
-    git clone [https://github.com/your-username/payment-gateway-v2.git](https://github.com/your-username/payment-gateway-v2.git)
-    ```
-2.  Navigate to the project folder:
-    ```bash
-    cd payment-gateway-v2
-    ```
-3.  Start the services:
-    ```bash
-    docker-compose up --build
-    ```
-4.  Open the **Dashboard**:
-    * Navigate to the project folder in your file explorer.
-    * Double-click `index.html` to open it in your browser.
+git clone [https://github.com/srinadh93/payment-gateway-v2.git](https://github.com/srinadh93/payment-gateway-v2.git)
+Navigate to the project folder:
 
-## 🔌 API Endpoints
+Bash
 
-### 1. Create a Payment
-**POST** `http://localhost:8080/api/v1/payments`
+cd payment-gateway-v2
+Start the services:
 
-**Body:**
-```json
+Bash
+
+docker-compose up --build
+Open the Dashboard:
+
+Navigate to the project folder in your file explorer.
+
+Double-click index.html to open it in your browser.
+
+🔌 API Endpoints
+1. Create a Payment
+POST http://localhost:8080/api/v1/payments
+
+Body:
+
+JSON
+
 {
   "amount": 500.00,
   "webhookUrl": "[https://webhook.site/your-unique-url](https://webhook.site/your-unique-url)"
@@ -97,6 +108,8 @@ JSON
 ✅ CORS: Enabled for frontend dashboard integration.
 
 📝 Project Structure
+Bash
+
 payment-gateway-v2/
 ├── backend/
 │   ├── src/main/java/com/gateway/
@@ -112,3 +125,18 @@ payment-gateway-v2/
 ├── docker-compose.yml      # Orchestration
 ├── index.html              # Frontend Dashboard
 └── README.md               # Documentation
+👤 Author
+Srinadh
+
+GitHub Profile
+
+
+---
+
+### **4. Save and Push**
+After pasting the new code, run these commands in your VS Code terminal to update the website:
+
+```powershell
+git add README.md
+git commit -m "Fix README formatting"
+git push origin main
