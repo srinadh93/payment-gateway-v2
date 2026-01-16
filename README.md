@@ -133,9 +133,6 @@ GitHub Profile
 
 ---
 
-### **4. Save and Push**
-After pasting the new code, run these commands in your VS Code terminal to update the website:
-
 ```powershell
 git add README.md
 git commit -m "Fix README formatting"
