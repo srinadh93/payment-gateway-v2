@@ -1,0 +1,58 @@
+#payment-gateway-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#payment-gateway-modal .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#payment-gateway-modal .modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  height: 80vh;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#payment-gateway-modal .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10001;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+#payment-gateway-modal .close-button:hover {
+  color: #666;
+}
+
+#payment-gateway-modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  #payment-gateway-modal .modal-content {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
