@@ -65,6 +65,8 @@ A production-ready payment gateway system with merchant onboarding, payment orde
    ```bash
    curl http://localhost:8000/health
    ```
+screenshot 
+<img width="1919" height="1023" alt="Screenshot 2026-01-16 152008" src="https://github.com/user-attachments/assets/a9d7d0ea-5c29-4f2b-b1fd-4a1e1ef18699" />
 
 ### Test Merchant Credentials
 
